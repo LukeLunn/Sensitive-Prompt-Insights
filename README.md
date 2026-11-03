@@ -1,3 +1,3 @@
-## Sensitive Prompt Insights 
+## Sensitive Prompt Insights
 
 Practice repo for AI-security-based classification and clustering tasks
