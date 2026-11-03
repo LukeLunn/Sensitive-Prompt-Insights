@@ -1,0 +1,32 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual environment (rebuilt from the lockfile, never committed)
+.venv/
+
+# Build output
+build/
+dist/
+*.egg-info/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Secrets and local config
+.env
+.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# VS Code: share the project settings, ignore personal ones
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
