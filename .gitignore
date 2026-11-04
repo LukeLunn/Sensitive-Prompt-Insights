@@ -30,3 +30,6 @@ Thumbs.db
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# Personal Claude Code context
+CLAUDE.local.md
