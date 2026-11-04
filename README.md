@@ -3,7 +3,7 @@
 [![CI](https://github.com/LukeLunn/Sensitive-Prompt-Insights/actions/workflows/ci.yml/badge.svg)](https://github.com/LukeLunn/Sensitive-Prompt-Insights/actions/workflows/ci.yml)
 
 Detect sensitive data in GenAI prompts, group prompts by how they are used, and
-report insights with calibrated uncertainty. The intention for this repo is to practice AI-security based tasks and develop and evidence skills for working in this field. The choices made are in part to be effective and solve the problems considered, but also to fill in gaps in my skillset. This means some models are not considered if I am already familiar with their use.
+report insights with calibrated uncertainty. The intention for this repo is to practise AI-security-based tasks and develop and evidence skills for working in this field. The choices made are in part to be effective and solve the problems considered, but also to fill in gaps in my skillset. This means some models are not considered if I am already familiar with their use.
 
 > **Data policy:** this project uses synthetic or public data only. It never uses
 > real, employer or customer data.
