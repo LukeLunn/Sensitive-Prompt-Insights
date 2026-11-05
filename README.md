@@ -40,7 +40,13 @@ uv run pytest                # tests
 ## Project layout
 
 ```
-src/sensitive_prompt_insights/   package code
+src/sensitive_prompt_insights/   package code, one subpackage per pipeline stage:
+  data/                          load public data, generate synthetic prompts, split
+  detection/                     regex and TF-IDF baselines, per-category metrics
+  clustering/                    embeddings, UMAP + HDBSCAN, stability check
+  uncertainty/                   bootstrap and Wilson intervals, calibration
+  labelling/                     hand-labelled gold set, out-of-fold label audit
+  reporting/                     usage-insight report
 tests/                           pytest tests
 .github/workflows/ci.yml         CI: lint, format, types, tests on Python 3.12 and 3.13
 pyproject.toml / uv.lock         declared dependencies / exact locked versions
