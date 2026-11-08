@@ -11,8 +11,8 @@ report insights with calibrated uncertainty. The intention for this repo is to p
 ## Status
 
 In progress. Scaffolding is in place (packaging, lockfile, linting, strict typing,
-tests, CI). Nemotron-PII loading and exploratory analysis are done; the detection
-baselines are next (see [Roadmap](#roadmap)).
+tests, CI). Nemotron-PII loading, exploratory analysis and the label-to-category
+mapping are done; the detection baselines are next (see [Roadmap](#roadmap)).
 
 ## Getting started
 
@@ -71,7 +71,7 @@ pyproject.toml / uv.lock         declared dependencies / exact locked versions
 
 - [x] Load Nemotron-PII into typed DataFrames; exploratory analysis of labels,
       spans and splits.
-- [ ] Map the 55 PII labels to report categories.
+- [x] Map the 55 PII labels to report categories.
 - [ ] Baselines on the source documents: a regex detector, and TF-IDF + logistic
       regression. Report precision, recall and F1 per category, broken down by
       seen and unseen document types.
@@ -108,6 +108,15 @@ and not stored in this repository.
   would cross the split.
 - **Offsets** were verified on all spans. 0.78% of span texts differ from the
   document only in letter case; positions are used as the source of truth.
+- **Categories:** the 55 labels map to 8 sensitive categories (contact, government
+  ID, financial, credentials, health, protected attribute, identity, technical ID)
+  plus "not sensitive" (`data/labels.py`). A test checks the mapping covers every
+  label, and an unknown label raises an error instead of being treated as clean.
+- **Known limitation:** labels such as `city`, `age` or `gender` are treated as not
+  sensitive on their own, although combinations of them can identify a person
+  (Sweeney: ZIP code, date of birth and gender identify most Americans). v1 does
+  not score combinations; it would be a separate, explicit rule rather than a change
+  to the per-label mapping, so every category still traces back to one span.
 
 ## Use of AI assistance
 
