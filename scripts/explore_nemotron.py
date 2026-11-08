@@ -3,6 +3,7 @@ from collections import Counter
 
 import pandas as pd
 
+from sensitive_prompt_insights.data.labels import LABEL_TO_CATEGORY
 from sensitive_prompt_insights.data.load import DatasetDict, load_nemotron_pii
 
 if __name__ == "__main__":
@@ -62,11 +63,19 @@ if __name__ == "__main__":
     # data_view_prints(ds)
     df_train = check_for_missing_values(ds["train"])
     df_test = check_for_missing_values(ds["test"])
-    # label_counts_train = count_label_types_in_span(df_train)
-    # label_counts_test = count_label_types_in_span(df_test)
+    label_counts_train = count_label_types_in_span(df_train)
+    label_counts_test = count_label_types_in_span(df_test)
     # for label, val in label_counts_train.most_common():
     #     print(f"Train - {label}: {val}")
     # for label, val in label_counts_test.most_common():
     #     print(f"Test - {label}: {val}")
-    check_domain_and_document_type(df_train)
-    check_domain_and_document_type(df_test)
+    # check_domain_and_document_type(df_train)
+    # check_domain_and_document_type(df_test)
+
+    # Check the label mapping against the labels actually in the data
+    mapped = set(LABEL_TO_CATEGORY)
+    for split, counts in (("Train", label_counts_train), ("Test", label_counts_test)):
+        seen = set(counts)
+        print(f"{split}: {len(seen)} labels in data")
+        print(f"  in data but not mapped: {sorted(seen - mapped)}")
+        print(f"  mapped but not in data: {sorted(mapped - seen)}")
