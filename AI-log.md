@@ -7,7 +7,7 @@ documentation. This log records what it helped with and what I changed.
 
 | Date | Area | What the assistant did | What I did / corrected |
 |------|------|------------------------|------------------------|
-| 2026-11-04 | README | Drafted this README from my project notes. | Rewrote the introduction with some personal context and reasoning for this repo. |
+| 2026-11-04 | README | Drafted the README from my project notes. | Rewrote the introduction with some personal context and reasoning for this repo. |
 | 2026-11-04 | Dataset research | Researched public PII datasets and their licences. | Chose Nemotron-PII. |
 | 2026-11-04 | Environment | Diagnosed a Windows install block and explained the type-checking setup. | Added the dependencies and mypy config. |
 | 2026-11-05 | Package structure | Helped put together the subpackage structure and module skeletons. | Chose the pipeline stages the structure follows. |

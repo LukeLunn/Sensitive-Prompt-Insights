@@ -51,6 +51,7 @@ scripts/                         one-off analysis (e.g. explore_nemotron.py), no
 tests/                           pytest tests
 .github/workflows/ci.yml         CI: lint, format, types, tests on Python 3.12 and 3.13
 pyproject.toml / uv.lock         declared dependencies / exact locked versions
+AI-log.md                        what the AI assistant helped with, and what I did
 ```
 
 ## Why it is set up this way
