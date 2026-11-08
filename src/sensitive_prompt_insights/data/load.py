@@ -1,5 +1,6 @@
-from datasets import load_dataset
+from datasets import DatasetDict, load_dataset
 
-if __name__ == "__main__":
+
+def load_nemotron_pii() -> DatasetDict:
     ds = load_dataset("nvidia/Nemotron-PII")
-    print(ds)
+    return ds
