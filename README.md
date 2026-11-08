@@ -41,7 +41,7 @@ uv run pytest                # tests
 
 ```
 src/sensitive_prompt_insights/   package code, one subpackage per pipeline stage:
-  data/                          load public data, generate synthetic prompts, split
+  data/                          load Nemotron-PII, build the prompt dataset, split
   detection/                     regex and TF-IDF baselines, per-category metrics
   clustering/                    embeddings, UMAP + HDBSCAN, stability check
   uncertainty/                   bootstrap and Wilson intervals, calibration
@@ -68,9 +68,10 @@ pyproject.toml / uv.lock         declared dependencies / exact locked versions
 
 ## Roadmap
 
-- [ ] Synthetic prompt dataset (~1,500–3,000 prompts) covering sensitive-data
-      categories plus benign prompts, with documentation of how it was generated.
-      Split by template family so near-duplicates never appear in both train and test.
+- [ ] Prompt dataset (~2,000–3,000 prompts): Nemotron-PII passages wrapped in
+      prompt templates, PII labels mapped to report categories, plus benign and
+      hard-negative prompts. Document how it was built. Use a grouped split so
+      near-duplicates never appear in both train and test.
 - [ ] Baselines: a regex detector, and TF-IDF + logistic regression. Report
       precision, recall and F1 per category.
 - [ ] Embeddings, UMAP and HDBSCAN clustering, with a stability check.
@@ -78,6 +79,16 @@ pyproject.toml / uv.lock         declared dependencies / exact locked versions
 - [ ] Hand-labelled gold set with an out-of-fold label audit.
 - [ ] Usage-insight report: share of risky prompts per cluster with Wilson
       intervals, flagging groups too small to report.
+
+## Data and attribution
+
+Source documents and PII labels come from
+[Nemotron-PII](https://huggingface.co/datasets/nvidia/Nemotron-PII) by NVIDIA, a
+synthetic dataset licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This project adapts it
+by wrapping passages in prompt templates, grouping its PII labels into broader
+categories, and adding benign prompts. The raw dataset is downloaded at runtime
+and not stored in this repository.
 
 ## Use of AI assistance
 
@@ -88,3 +99,5 @@ documentation. This log records what it helped with and what I changed.
 | Date | Area | What the assistant did | What I did / corrected |
 |------|------|------------------------|------------------------|
 | 2026-11-04 | README | Drafted this README from my project notes. | Rewrote the introduction with some personal context and reasoning for this repo. |
+| 2026-11-05 | Package structure | Helped put together the subpackage structure and module skeletons. | Chose the pipeline stages the structure follows. |
+| 2026-11-08 | Docs | Aligned module docstrings and the README roadmap with the Nemotron-based dataset plan; added the data attribution section. | Chose the Nemotron approach and asked for the docs to be brought in line with it. |
