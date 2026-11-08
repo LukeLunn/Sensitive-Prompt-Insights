@@ -120,19 +120,5 @@ and not stored in this repository.
 
 ## Use of AI assistance
 
-I used an AI coding assistant (Claude Code) on this project. I write most of the
-project code myself; where the assistant changed code, the log below says so. The
-assistant helps with explanations, code review, and drafting
-documentation. This log records what it helped with and what I changed.
-
-| Date | Area | What the assistant did | What I did / corrected |
-|------|------|------------------------|------------------------|
-| 2026-11-04 | README | Drafted this README from my project notes. | Rewrote the introduction with some personal context and reasoning for this repo. |
-| 2026-11-04 | Dataset research | Researched public PII datasets and licences (Nemotron-PII, Gretel, ai4privacy, PANOPTICON). | Chose Nemotron-PII. |
-| 2026-11-04 | Environment | Diagnosed a Windows Smart App Control block on pandas 3.1.1 and excluded that version; explained the mypy override for untyped `datasets` and adding `pandas-stubs`. | Added the dependencies and mypy config. |
-| 2026-11-05 | Package structure | Helped put together the subpackage structure and module skeletons. | Chose the pipeline stages the structure follows. |
-| 2026-11-08 | Docs | Aligned module docstrings and the README roadmap with the Nemotron-based dataset plan; added the data attribution section. | Chose the Nemotron approach and asked for the docs to be brought in line with it. |
-| 2026-11-08 | Exploration | Explained the span format and safe parsing (`ast.literal_eval`), suggested checks, cross-checked my numbers, and found the source split already holds out domains. | Wrote `explore_nemotron.py` and ran the analysis. |
-| 2026-11-08 | Data loading | Reviewed my loader, added the typed `Span` and pandas conversion, and found span-text mismatches were case-only. | Wrote the first version, then revised the assistant's changes (renamed fields, simplified the structure). |
-| 2026-11-08 | Tests | Gave example tests for span parsing and suggested more cases (non-list input, code injection, missing fields). | Wrote the tests; my text-match test caught a wrong span offset in the assistant's example. |
-| 2026-11-08 | Label mapping | Proposed the 9 categories and the `StrEnum` design, typed out the 55-label mapping and a test template, and reviewed my code. It flagged an attribute access on a TypedDict, unknown labels being silently dropped, PII in an error message, and a test that always passed. It applied the final version of `categories_for` after review, and updated the README and docstrings. | Approved the proposed categories and scoped out quasi-identifier combinations. Wrote `categories_for` and the tests, and fixed the review points in the tests. |
+I used an AI coding assistant (Claude Code) on this project. What it helped with,
+and what I wrote or corrected, is logged in [AI-log.md](AI-log.md).
